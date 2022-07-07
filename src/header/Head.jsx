@@ -5,13 +5,13 @@ const Head = () => {
     return (
         <div className='head'>
             <div className="wrapper">
-            <div className='info'>
+            <nav className='info'>
                     <ul>
                         <li><NavLink to='/sale'>Акции</NavLink></li>
                         <li><NavLink to='/shipment'>Доставка и оплата</NavLink></li>
                         <li><NavLink to='/contacts'>Контакты</NavLink></li>
                     </ul>
-            </div>
+            </nav>
             <div className="socials">
                    <i class="fa-brands fa-instagram-square"></i>
                    <i class="fa-brands fa-vk"></i> 
