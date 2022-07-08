@@ -22,7 +22,7 @@ const Head = () => {
             </div>
            <div className='login'>
            <button>Войти</button>
-           <i class="fa-solid fa-arrow-right-to-bracket"></i>
+           <i className="fa-solid fa-arrow-right-to-bracket"></i>
            </div>
            </div>  
         </div>
