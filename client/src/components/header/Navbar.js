@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 
+
 const Navbar = () => {
     return (
         <nav className='categories_nav'>
@@ -14,6 +15,7 @@ const Navbar = () => {
                     <li><NavLink to='/disposablePODs'>Одноразки</NavLink></li>
                     <li><NavLink to='/PODs'>PODы</NavLink></li>
                     <li><NavLink to='/liquids'>Жидкости</NavLink></li>
+                    <li><NavLink to='/bongs'>Бонги</NavLink></li>
                 </ul>
             </div>
         </nav>

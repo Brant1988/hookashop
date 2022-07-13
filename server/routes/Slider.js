@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { Brand } = require("../models");
+const { Slider } = require("../models");
 const checkRole = require("../middleware/checkRoleMiddleware");
 
-router.post("/brand", async (req, res, next) => {
+router.post("/slider", async (req, res, next) => {
   try {
-    const { name } = req.body;
-    const brand = await Brand.create({ name });
-    return res.json(brand);
+    const { title, img } = req.body;
+    const slider = await Slider.create({ title, img });
+    return res.json(slider);
   } catch (err) {
     return next(
       res.json({
@@ -17,15 +17,10 @@ router.post("/brand", async (req, res, next) => {
     );
   }
 });
-router.get("/brand", async (req, res, next) => {
+router.get("/slider", async (req, res, next) => {
   try {
-    let { ...params } = req.query;
-    const brands = await Brand.findAll({
-      where: {
-        ...params,
-      },
-    });
-    return res.json(brands);
+    const slider = await Slider.findAll();
+    return res.json(slider);
   } catch (err) {
     return next(
       res.json({
