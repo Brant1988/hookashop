@@ -7,15 +7,15 @@ const Tobacco = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProducts(2));
+    dispatch(fetchProducts());
   }, [dispatch]);
 
-  const { data: tobacco, isLoading } = useSelector((state) => state.products);
+  const { data: tobacco } = useSelector((state) => state.products);
 
   console.log("hookahs", tobacco);
   return (
     <div className="wrapper">
-      {isLoading ? (
+      {/* {isLoading ? (
         <span>LOADING</span>
       ) : (
         <div className="productsList">
@@ -28,7 +28,7 @@ const Tobacco = () => {
             );
           })}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

@@ -1,25 +1,34 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-
-
+import React from "react";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { fetchProducts } from "../../reducers/products";
 
 const Navbar = () => {
-    return (
-        <nav className='categories_nav'>
-            <div className="wrapper">
-                <ul>
-                    <li><NavLink to='/hookahs'>Кальяны</NavLink></li>
-                    <li><NavLink to='/tobacco'>Табак</NavLink></li>
-                    <li><NavLink to='/charcoal'>Уголь</NavLink></li>
-                    <li><NavLink to='/accessories'>Аксессуары</NavLink></li>
-                    <li><NavLink to='/disposablePODs'>Одноразки</NavLink></li>
-                    <li><NavLink to='/PODs'>PODы</NavLink></li>
-                    <li><NavLink to='/liquids'>Жидкости</NavLink></li>
-                    <li><NavLink to='/bongs'>Бонги</NavLink></li>
-                </ul>
-            </div>
-        </nav>
-    );
-}
+  const dispatch = useDispatch();
+  return (
+    <nav className="categories_nav">
+      <div className="wrapper">
+        <NavLink
+          to="/hookahs"
+          onClick={() => dispatch(fetchProducts({ categoryId: 1 }))}
+        >
+          Кальяны
+        </NavLink>
+
+        <NavLink to="/tobacco">Табак</NavLink>
+
+        <NavLink to="/charcoal">Уголь</NavLink>
+
+        <NavLink to="/accessories">Аксессуары</NavLink>
+
+        <NavLink to="/PODs">PODы</NavLink>
+
+        <NavLink to="/liquids">Жидкости</NavLink>
+
+        <NavLink to="/bongs">Бонги</NavLink>
+      </div>
+    </nav>
+  );
+};
 
 export default Navbar;

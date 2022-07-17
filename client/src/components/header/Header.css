@@ -16,12 +16,16 @@
 
 .info ul a{
     text-decoration: none;
+    color: gray;
+}
+
+.info ul a:hover {
     color: black;
 }
 
+
 .info ul li{
    margin-right: 15px;
-  
 }
 
 .socials i{
@@ -36,10 +40,14 @@
     font-size: 1.2em;
     margin-right: 10px;
     cursor: pointer;
+    color: gray;
 }
-
+.login button:hover{
+    color: black;
+}
 .login i{
-    font-size: 1.2em
+    font-size: 1.2em;
+    margin-right: 1em;
 }
 
 /*-------------------- Search --------------------*/
@@ -53,7 +61,7 @@
 .search-box {
     width: 360px;
     padding: 3px 3px;
-    border: 1px solid black;
+    border: 1px solid gray;
     border-radius: 15px;
    
 }
@@ -69,46 +77,62 @@
     cursor: pointer;
 }
 
-.cart i {
-    font-size: 1.8em;
-    color: black;
+.cart a{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
 }
 
-.cart span {
+.cart i {
+    font-size: 1.8em;
+    color: gray;
+}
+
+.bag-quantity span {
+    margin: auto auto;
     font-size: 1.2em;
-    color: black;
+    color: gray;
+}
+
+.bag-quantity {
+    margin-right: 1.2em;
+    margin-left: 0.1em;
+    display: flex;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background: yellow;
+    border-radius: 50%;
 }
 
 /*-------------------- Navbar --------------------*/
 .categories_nav {
+    width: 100%;
     height: 60px;
     background-color: white;
     box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
-}
-
-.categories_nav ul{
-    height: 100%;
     display: flex;
+    justify-content: start;
     flex-direction: row;
     list-style: none;
     font-size: 1.3em;
-    position: relative;
+    position: fixed;
 }
 
-.categories_nav ul li {
-    margin-top: 15px;
-    margin-right: 20px;
+.categories_nav a{
+    margin-top: 25px;
     cursor: pointer;
-    transition: 0.5;
-    text-decoration: none;
-    color: black;
 }
 
-.categories_nav ul a {
+.categories_nav  a {
     text-decoration: none;
-    color: black;
+    color: gray;
+    transition: 0.5s;
+    font-size: 1.3em;
 }
 
-.categories_nav ul a:hover{
-   color: yellow;
+.categories_nav  a:hover{
+   color:black;
+   border-bottom: 1px solid black ;
+   transform: translateY(-10px);
 }

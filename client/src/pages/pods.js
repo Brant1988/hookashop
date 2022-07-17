@@ -1,11 +1,7 @@
 import React from "react";
 
 const PODs = () => {
-  return (
-    <div className="wrapper">
-      <h1>PODs</h1>
-    </div>
-  );
+  return <div className="wrapper"></div>;
 };
 
 export default PODs;

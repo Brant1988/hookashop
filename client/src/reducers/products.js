@@ -1,27 +1,34 @@
 import axios from "axios";
 
 // action types
-
+export const FETCH_BRANDS = "FETCH_BRANDS";
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const FETCH_PRODUCTS_ATTEMPT = "FETCH_PRODUCTS_ATTEMPT";
 
 // initial state
 
 const initialState = {
-  // userIsAuth: false,
-  // userShoppingCart: [],
   isLoading: false,
-  data: [],
+  products: [],
+  brands: [],
+  brandId: [],
 };
 
 // reducer
 
-export const productsReducer = (state = initialState, action) => {
-  switch (action.type) {
+export const productsReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case FETCH_PRODUCTS_ATTEMPT:
       return { ...state, isLoading: true };
     case FETCH_PRODUCTS:
-      return { ...state, data: action.payload, isLoading: false };
+      return {
+        ...state,
+        products: payload.rows,
+        brandId: payload.rows.map((product) => product.brandId),
+        isLoading: false,
+      };
+    case FETCH_BRANDS:
+      return { ...state, brands: payload.data, isLoading: false };
     default:
       return state;
   }
@@ -29,12 +36,22 @@ export const productsReducer = (state = initialState, action) => {
 
 // actions
 
-export const fetchProducts = (category) => {
+export const fetchProducts = (params = {}) => {
   return async (dispatch) => {
     dispatch({ type: FETCH_PRODUCTS_ATTEMPT });
     const response = await axios.get("http://localhost:5000/product", {
-      params: { categoryId: category },
+      params,
     });
     dispatch({ type: FETCH_PRODUCTS, payload: response.data });
+  };
+};
+
+export const fetchBrands = (brandId = []) => {
+  return async (dispatch) => {
+    dispatch({ type: FETCH_PRODUCTS_ATTEMPT });
+    const response = await axios.get("http://localhost:5000/brand", {
+      params: { id: [...brandId] },
+    });
+    dispatch({ type: FETCH_BRANDS, payload: response });
   };
 };

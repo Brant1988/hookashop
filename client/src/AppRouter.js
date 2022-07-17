@@ -1,5 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Contacts from "./pages/contacts";
 import Header from "./components/header/Header";
 import Home from "./components/main/Main";
@@ -12,8 +17,24 @@ import PODs from "./pages/pods";
 import Liquids from "./pages/liquids";
 import Sale from "./pages/sale";
 import ShipAndPay from "./pages/shipAndPay";
+import Auth from "./pages/auth";
+import Cart from "./pages/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotals } from "./reducers/cart";
 
 const AppRouter = () => {
+  const dispatch = useDispatch();
+  const { cart, cartTotalAmount, cartTotalPrice } = useSelector(
+    (state) => state.cart
+  );
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
+
+  console.log("cart", cart);
+  console.log(cartTotalPrice, cartTotalAmount);
+
   return (
     <Router>
       <Header />
@@ -22,6 +43,8 @@ const AppRouter = () => {
         <Route element={<Contacts />} path="/contacts" />
         <Route element={<Sale />} path="/sale" />
         <Route element={<ShipAndPay />} path="/shipment"></Route>
+        <Route element={<Auth />} path="/auth" />
+        <Route element={<Cart />} path="/cart" />
         <Route element={<Hookahs />} path="/hookahs" />
         <Route element={<Tobacco />} path="/tobacco"></Route>
         <Route element={<Charcoal />} path="/charcoal"></Route>
@@ -29,6 +52,7 @@ const AppRouter = () => {
         <Route element={<DisposablePODs />} path="/disposablePODs"></Route>
         <Route element={<PODs />} path="/PODs"></Route>
         <Route element={<Liquids />} path="/liquids"></Route>
+        <Route element={<Navigate to="/" />} path="/redirect"></Route>
       </Routes>
     </Router>
   );

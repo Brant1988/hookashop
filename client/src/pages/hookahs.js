@@ -1,37 +1,71 @@
-import React from "react";
+import ListGroup from "react-bootstrap/ListGroup";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../reducers/products";
+import { fetchBrands, fetchProducts } from "../reducers/products";
+import { addToCart } from "../reducers/cart";
+import "./pages.css";
 
 const Hookahs = () => {
   const dispatch = useDispatch();
 
+  const {
+    products: hookahs,
+    brandId,
+    brands,
+    isLoading,
+  } = useSelector((state) => state.products);
+
   useEffect(() => {
-    dispatch(fetchProducts(1));
+    dispatch(fetchProducts({ categoryId: 1 }));
   }, [dispatch]);
 
-  const { data: hookahs, isLoading } = useSelector((state) => state.products);
+  useEffect(() => {
+    dispatch(fetchBrands([...brandId]));
+  }, [dispatch]);
 
-  console.log("hookahs", hookahs);
   return (
-    <div className="wrapper">
+    <div className="shopPage">
       {isLoading ? (
         <span>LOADING</span>
       ) : (
-        <div className="productsList">
-          {hookahs.rows.map((hook) => {
-            return (
-              <div className="product" key={hook.id}>
-                <img
-                  width={250}
-                  height={250}
-                  src={"http://localhost:5000/" + hook.img}
-                ></img>
-                {hook.name}
-              </div>
-            );
-          })}
-        </div>
+        <>
+          <ListGroup as="ul">
+            {brands.map((brand) => {
+              return (
+                <ListGroup.Item
+                  key={brand.id}
+                  onClick={() => dispatch(fetchProducts({ brandId: brand.id }))}
+                >
+                  {brand.name}
+                </ListGroup.Item>
+              );
+            })}
+          </ListGroup>
+          <div className="productsList">
+            {hookahs.map((hookah) => {
+              return (
+                <div className="product" key={hookah.id}>
+                  <img
+                    width={200}
+                    height={200}
+                    src={"http://localhost:5000/" + hookah.img}
+                    alt={hookah.name}
+                  ></img>
+                  <div className="product_info">
+                    <h1>{hookah.name}</h1>
+
+                    <h4>{hookah.oldPrice}</h4>
+
+                    <h3>{hookah.price}</h3>
+                  </div>
+                  <button onClick={() => dispatch(addToCart(hookah))}>
+                    В корзину
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        </>
       )}
     </div>
   );
