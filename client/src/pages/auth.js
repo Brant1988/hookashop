@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../reducers/auth";
+import { loginUser, registerUser } from "../reducers/auth";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
@@ -11,18 +11,22 @@ const Auth = () => {
     password: "",
   });
 
-  // const [userExist, setUserExist] = useState(false);
-  const handleChange = (e) => {
-    const value = e.target.value;
+  const [userExist, setUserExist] = useState(true);
+
+  const handleChange = (event) => {
+    const value = event.target.value;
     setUserData({
       ...userData,
-      [e.target.name]: value,
+      [event.target.name]: value,
     });
   };
   console.log(userData);
-
   return (
     <div className="wrapper">
+      <button onClick={() => setUserExist(false)}>
+        Нет аккаунта? Зарегестрируйтесь
+      </button>
+      <button onClick={() => setUserExist(true)}>Или войдите</button>
       <div className="auth_form">
         <div className="input_box">
           <input
@@ -45,14 +49,25 @@ const Auth = () => {
           <span>введите пароль</span>
         </div>
       </div>
-      <button
-        onClick={() => {
-          dispatch(loginUser(userData));
-          navigate(-1);
-        }}
-      >
-        Войти
-      </button>
+      {userExist ? (
+        <button
+          onClick={() => {
+            dispatch(loginUser(userData));
+            navigate(-1);
+          }}
+        >
+          Войти
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            dispatch(registerUser(userData));
+            navigate(-1);
+          }}
+        >
+          Регистрация
+        </button>
+      )}
     </div>
   );
 };

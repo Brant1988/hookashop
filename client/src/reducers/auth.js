@@ -20,14 +20,24 @@ const initialState = {
 export const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case LOGIN:
-      const userInfo = jwt_decode(payload.data.jwt);
+      const loginInfo = jwt_decode(payload.data.jwt);
       return {
         ...state,
         token: payload.data.jwt,
         isAuth: true,
-        id: userInfo.id,
-        email: userInfo.email,
-        role: userInfo.role,
+        id: loginInfo.id,
+        email: loginInfo.email,
+        role: loginInfo.role,
+      };
+    case REGISTER:
+      const registerInfo = jwt_decode(payload.data.jwt);
+      return {
+        ...state,
+        token: payload.data.jwt,
+        isAuth: true,
+        id: registerInfo.id,
+        email: registerInfo.email,
+        role: registerInfo.role,
       };
     case LOGOUT:
       return {
@@ -59,11 +69,12 @@ export const loginUser = ({ email, password }) => {
   };
 };
 
-export const registerUser = (params = {}) => {
+export const registerUser = ({ email, password }) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:5000/registration", {
-        params,
+      const response = await axios.post("http://localhost:5000/registration", {
+        email,
+        password,
       });
       dispatch({ type: REGISTER, payload: response });
     } catch (err) {

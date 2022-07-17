@@ -40,7 +40,7 @@ router.post("/registration", async (req, res, next) => {
     });
 
     const jwt = generateJwt(user.id, email, user.role);
-    return res.json(jwt);
+    return res.json({ jwt });
   } catch (err) {
     return next(
       res.json({
