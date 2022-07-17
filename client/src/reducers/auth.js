@@ -45,11 +45,12 @@ export const authReducer = (state = initialState, { type, payload }) => {
 
 // actions
 
-export const loginUser = (params) => {
+export const loginUser = ({ email, password }) => {
   return async (dispatch) => {
     try {
-      const response = await axios.post("http://localhost:5000/login", null, {
-        params,
+      const response = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
       });
       dispatch({ type: LOGIN, payload: response });
     } catch (err) {

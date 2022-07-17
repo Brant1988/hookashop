@@ -13,7 +13,7 @@ const generateJwt = (id, email, role) => {
 
 router.post("/registration", async (req, res, next) => {
   try {
-    const { email, password, role } = req.query;
+    const { email, password, role } = req.body;
     if (!email || !password) {
       return next(
         res.json({
@@ -53,7 +53,7 @@ router.post("/registration", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   try {
-    const { email, password } = req.query;
+    const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
     if (!user) {
       return next(
