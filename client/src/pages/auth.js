@@ -20,7 +20,7 @@ const Auth = () => {
       [event.target.name]: value,
     });
   };
-  console.log(userData);
+
   return (
     <div className="wrapper">
       <button onClick={() => setUserExist(false)}>

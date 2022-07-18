@@ -7,26 +7,24 @@ const Navbar = () => {
   const dispatch = useDispatch();
   return (
     <nav className="categories_nav">
-      <div className="wrapper">
-        <NavLink
-          to="/hookahs"
-          onClick={() => dispatch(fetchProducts({ categoryId: 1 }))}
-        >
-          Кальяны
-        </NavLink>
+      <NavLink
+        to="/hookahs"
+        onClick={() => dispatch(fetchProducts({ categoryId: 1 }))}
+      >
+        Кальяны
+      </NavLink>
 
-        <NavLink to="/tobacco">Табак</NavLink>
+      <NavLink to="/tobacco">Табак</NavLink>
 
-        <NavLink to="/charcoal">Уголь</NavLink>
+      <NavLink to="/charcoal">Уголь</NavLink>
 
-        <NavLink to="/accessories">Аксессуары</NavLink>
+      <NavLink to="/accessories">Аксессуары</NavLink>
 
-        <NavLink to="/PODs">PODы</NavLink>
+      <NavLink to="/PODs">PODы</NavLink>
 
-        <NavLink to="/liquids">Жидкости</NavLink>
+      <NavLink to="/liquids">Жидкости</NavLink>
 
-        <NavLink to="/bongs">Бонги</NavLink>
-      </div>
+      <NavLink to="/bongs">Бонги</NavLink>
     </nav>
   );
 };

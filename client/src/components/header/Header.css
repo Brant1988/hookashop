@@ -6,7 +6,9 @@
     background-color: rgb(247, 247, 23);
 }
 
-.info ul {
+
+
+.info {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -14,22 +16,22 @@
     cursor: pointer;
 }
 
-.info ul a{
+.info  a{
     text-decoration: none;
     color: gray;
 }
 
-.info ul a:hover {
+.info a:hover {
     color: black;
 }
 
 
-.info ul li{
+.info li{
    margin-right: 15px;
 }
 
 .socials i{
-    margin-left: 10px;
+    margin-right: 40px;
     font-size: 2.2em;
     cursor: pointer;
 }
@@ -46,6 +48,7 @@
     color: black;
 }
 .login i{
+    color: gray;
     font-size: 1.2em;
     margin-right: 1em;
 }
@@ -60,10 +63,10 @@
 
 .search-box {
     width: 360px;
+    height: 35px;
     padding: 3px 3px;
     border: 1px solid gray;
     border-radius: 15px;
-   
 }
 
 .search-box input{
@@ -107,24 +110,24 @@
 
 /*-------------------- Navbar --------------------*/
 .categories_nav {
-    width: 100%;
+    margin: auto;
+    width: 70%;
     height: 60px;
     background-color: white;
     box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
     display: flex;
-    justify-content: start;
-    flex-direction: row;
     list-style: none;
     font-size: 1.3em;
-    position: fixed;
+   
 }
 
 .categories_nav a{
-    margin-top: 25px;
+    margin-top: 1rem;
     cursor: pointer;
 }
 
 .categories_nav  a {
+    margin-right: 1.2em;
     text-decoration: none;
     color: gray;
     transition: 0.5s;
@@ -134,5 +137,4 @@
 .categories_nav  a:hover{
    color:black;
    border-bottom: 1px solid black ;
-   transform: translateY(-10px);
 }

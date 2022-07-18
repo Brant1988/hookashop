@@ -5,25 +5,27 @@
 
 .shopPage{
    margin: auto;
-   width: 80%;
+   width: 70%;
    margin-top: 1em;
    display: flex;
 }
 
 .productsList {
-    display: flex;
-    flex-wrap: wrap;
+   margin-left: 1em; 
+   display: flex;
+   flex-wrap: wrap;
 }
 
 .product {
-   margin-top: 1.5em;
-   width: 210px;
-   height: 350px;
+   width: 34em;
+   height: 43em;
    display: flex;
    margin-left: 1.5em;
+   margin-bottom: 1.5em;
    flex-direction: column;
    align-items: center;
    border: solid gray 1px;
+   font-size: 0.5em;
 }
 
 .product img {
@@ -36,7 +38,8 @@
    flex-wrap: wrap;
    justify-content: baseline;
    align-items: center;
-   height: 145px;
+   height: 245px;
+   position: relative;
 }
 
  .product_info h4 {
@@ -45,29 +48,41 @@
 
  .product button{
    align-items: center;
-   height:2.5em;
    width: 10em;
    background-color: rgb(236, 236, 100);
    border: solid gray 1px;
    border-radius: 10px;
    margin-bottom: 1em;
    cursor: pointer;
+   font-size: 1.6em;
+}
+
+.fillters {
+   width: 10em;
+   display: flex;
+   flex-direction: column;
+}
+
+.fillters button {
+   align-items: center;
+   width: 8.5em;
+   background-color: rgb(236, 236, 100);
+   border: solid gray 1px;
+   margin-top: 0.5em;
+   margin-bottom: 0.5em;
+   cursor: pointer;
+   font-size: 1em;
 }
 
 .brandFilter {
-   margin-top: 1.5em;
    list-style: none;
    cursor: pointer;
+  
 }
 
 .brandFilter li {
    margin-bottom: 0.5em;
 }
-
-.brandFilter li:hover {
-   border-bottom: solid rgb(236, 236, 100) 1px;
-   color:  rgb(236, 236, 100)
-  }
 
 .cart_product {
    margin-top: 1em;
@@ -180,9 +195,39 @@ text-align: right;
    border: 1px black solid;
 } 
 
-/* .input_box:nth-child(2) input:valid ~ span,
-.input_box:nth-child(2) input:focus ~ span {
-   background: black;
-   color: #f7f7f7;
-   border-radius: 2px;
-} */
+.slider {
+   display: flex;
+   flex-direction: column;
+}
+
+.product_page {
+   margin: auto;
+   width: 70%;
+   display: flex;
+}
+
+.product_page_info {
+   width: 60%;
+   margin-top: 1em;
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 75px);
+   grid-gap: 20px;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: solid gray 1px;
+}
+
+.product_page_info button {
+   cursor: pointer;
+   align-items: center;
+   height: 3em;
+   width: 10em;
+   background-color: rgb(236, 236, 100);
+   border: solid gray 1px;
+   border-radius: 10px;
+}
+
+.product_page_info h4 {
+   text-decoration: line-through;
+}

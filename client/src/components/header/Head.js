@@ -12,17 +12,15 @@ const Head = () => {
     <div className="head">
       <div className="wrapper">
         <nav className="info">
-          <ul>
-            <li>
-              <NavLink to="/sale">Акции</NavLink>
-            </li>
-            <li>
-              <NavLink to="/shipment">Доставка и оплата</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contacts">Контакты</NavLink>
-            </li>
-          </ul>
+          <li>
+            <NavLink to="/sale">Акции</NavLink>
+          </li>
+          <li>
+            <NavLink to="/shipment">Доставка и оплата</NavLink>
+          </li>
+          <li>
+            <NavLink to="/contacts">Контакты</NavLink>
+          </li>
         </nav>
         <div className="socials">
           <i className="fa-brands fa-instagram-square"></i>

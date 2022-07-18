@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap&subset=cyrillic-ext');
 
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    
 }
 
 body {
@@ -12,6 +12,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background: #f7f7f7;
     font-size: 15px;
+    box-sizing: border-box;
 }
 
 #root {
@@ -23,7 +24,6 @@ body {
     width: 70%;
     height: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 

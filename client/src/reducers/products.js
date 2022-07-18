@@ -11,7 +11,6 @@ const initialState = {
   isLoading: false,
   products: [],
   brands: [],
-  brandId: [],
 };
 
 // reducer
@@ -24,7 +23,6 @@ export const productsReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         products: payload.rows,
-        brandId: payload.rows.map((product) => product.brandId),
         isLoading: false,
       };
     case FETCH_BRANDS:

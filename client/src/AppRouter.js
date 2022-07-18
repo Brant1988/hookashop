@@ -19,21 +19,18 @@ import Sale from "./pages/sale";
 import ShipAndPay from "./pages/shipAndPay";
 import Auth from "./pages/auth";
 import Cart from "./pages/cart";
+import ProductPage from "./pages/productPage";
+import CategoryPage from "./pages/categoryPage";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotals } from "./reducers/cart";
 
 const AppRouter = () => {
   const dispatch = useDispatch();
-  const { cart, cartTotalAmount, cartTotalPrice } = useSelector(
-    (state) => state.cart
-  );
+  const { cart } = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
-
-  console.log("cart", cart);
-  console.log(cartTotalPrice, cartTotalAmount);
 
   return (
     <Router>
@@ -52,6 +49,8 @@ const AppRouter = () => {
         <Route element={<DisposablePODs />} path="/disposablePODs"></Route>
         <Route element={<PODs />} path="/PODs"></Route>
         <Route element={<Liquids />} path="/liquids"></Route>
+        <Route element={<ProductPage />} path={"/:name"}></Route>
+        <Route element={<CategoryPage />} path={"/brand/:name"}></Route>
         <Route element={<Navigate to="/" />} path="/redirect"></Route>
       </Routes>
     </Router>

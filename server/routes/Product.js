@@ -49,14 +49,13 @@ router.post("/product", async (req, res, next) => {
 // , checkRole("ADMIN"),
 router.get("/product", async (req, res, next) => {
   try {
-    let { what = "", limit = 12, page = 1, price, ...restParams } = req.query;
+    let { name = "", limit = 12, page = 1, price, ...restParams } = req.query;
     let products;
-    console.log(what);
-    if (what) {
+    if (name) {
       products = await Product.findAll({
         where: {
           name: {
-            [Op.like]: `%${what}%`,
+            [Op.iLike]: `%${name}%`,
           },
         },
         limit,
@@ -64,8 +63,10 @@ router.get("/product", async (req, res, next) => {
       });
     } else if (price) {
       products = await Product.findAndCountAll({
-        price: {
-          [Op.between]: [price, price],
+        where: {
+          price: {
+            [Op.between]: [...price],
+          },
         },
         limit,
         page,

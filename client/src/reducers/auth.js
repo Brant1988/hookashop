@@ -12,41 +12,22 @@ export const CHECK_AUTH = "CHECK_AUTH";
 const initialState = {
   token: "",
   isAuth: false,
-  id: "",
-  email: "",
-  role: "",
+  user: {},
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case LOGIN:
-      const loginInfo = jwt_decode(payload.data.jwt);
-      return {
-        ...state,
-        token: payload.data.jwt,
-        isAuth: true,
-        id: loginInfo.id,
-        email: loginInfo.email,
-        role: loginInfo.role,
-      };
     case REGISTER:
-      const registerInfo = jwt_decode(payload.data.jwt);
       return {
         ...state,
         token: payload.data.jwt,
+        user: jwt_decode(payload.data.jwt),
         isAuth: true,
-        id: registerInfo.id,
-        email: registerInfo.email,
-        role: registerInfo.role,
       };
     case LOGOUT:
       return {
         ...state,
-        token: "",
-        isAuth: false,
-        id: "",
-        email: "",
-        role: "",
       };
     default:
       return state;

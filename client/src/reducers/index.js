@@ -2,9 +2,9 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { authReducer } from "./auth";
 import { cartReducer } from "./cart";
-import { productsReducer } from "./products";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { productsReducer } from "./products";
 
 const persistConfig = {
   key: "root",
